@@ -15,7 +15,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    path = [path stringByAppendingString:@"/array.txt"];
+    
+    NSDictionary *dictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"value1", @"key1", @"value2", @"key2", nil];
+    [dictionary writeToFile:path atomically:YES];
+    
+    NSDictionary *dictionaryRead = [ NSDictionary dictionaryWithContentsOfFile:path];
+    NSLog(@"%@", dictionaryRead);
+    
+
 }
 
 
